@@ -55,15 +55,14 @@
             color:#cf9a27 ;
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             position: relative;
+            text-align: left;
+            margin-left: 20px;
         }
-        .cross-clas{
-            position: absolute;
-            right: 10px;
-            top: 10px;
-            height: 50px;
-            width: 50px;
-            color: aquamarine;
-        }
+       i{
+           position:absolute;
+           right: 30px;
+       }
+      
     </style>
 </head>
 <body>
@@ -73,7 +72,7 @@
         <div id="todo"></div>
     </div>
 
-  
+    <script src="https://kit.fontawesome.com/bf520e6492.js" crossorigin="anonymous"></script>
     <script>
         var inputfield = document.getElementById('inputfield');
         var button = document.getElementById('btn');
@@ -90,13 +89,17 @@
             par.classList.add('todoclass');
             todoc.appendChild(par);
 
-            par.innerText =items;
+            par.innerHTML =`
+             ${items}
+              <i class="fas fa-times"></i> `;
             inputfield.value = "";
 
             par.addEventListener('click', ()=>{par.style.textDecoration = "line-through"});
-            par.addEventListener('click', ()=>{todoc.removeChild(par)});
+            par.addEventListener('dblclick', ()=>{par.style.textDecoration = "none"});
+            par.querySelector('i').addEventListener('click', ()=>{todoc.removeChild(par)});
 
         })
+        alert('नमस्ते, कृपया Input-Field में कुछ दर्ज करें और Add-ToDo बटन दबाएं')
     </script>
 </body>
-</html>
+</html> 
