@@ -1,9 +1,11 @@
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List</title>
+
     <style>
         *{
             user-select: none;
@@ -52,31 +54,47 @@
             margin-bottom:-15px; 
             color:#cf9a27 ;
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            position: relative;
+        }
+        .cross-clas{
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            height: 50px;
+            width: 50px;
+            color: aquamarine;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1 style="text-align:center; color: #b36bee;">To-Do List</h1>
-        <input type="text" id="inputfield"> <button id="btn">Add-ToDo</button>
+        <input placeholder="write somthing here..." type="text" id="inputfield"> <button id="btn">Add-ToDo</button>
         <div id="todo"></div>
     </div>
 
+  
     <script>
         var inputfield = document.getElementById('inputfield');
         var button = document.getElementById('btn');
         var todoc = document.getElementById('todo');
+       
+
+        
 
         button.addEventListener('click',function(){
+            
+
+            var items  = inputfield.value;
             var par =document.createElement('p');
             par.classList.add('todoclass');
             todoc.appendChild(par);
 
-            par.innerText = inputfield.value;
+            par.innerText =items;
             inputfield.value = "";
 
             par.addEventListener('click', ()=>{par.style.textDecoration = "line-through"});
-            par.addEventListener('dblclick', ()=>{todoc.removeChild(par)});
+            par.addEventListener('click', ()=>{todoc.removeChild(par)});
 
         })
     </script>
