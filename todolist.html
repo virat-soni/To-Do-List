@@ -1,0 +1,83 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        *{
+            user-select: none;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        body{
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background-color:#245175f5;
+
+        }
+        .container{
+            width: 300px;
+            text-align: center;
+            position: absolute;
+            top: 100px
+
+           
+        }
+        #inputfield{
+            border-radius: 50px;
+            height: 30;
+            outline: none;
+            text-align: center;
+            background-color: #5b679cdc;
+            border: none;
+            font-size: large;
+            color:#b36bee;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        #btn{
+            border-radius: 50px;
+            height: 30px;
+            outline: none;
+            border: none;
+            background-color: #5b679cdc;
+        }
+        .todoclass{
+            font-size: x-large;
+            margin-bottom:-15px; 
+            color:#cf9a27 ;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align:center; color: #b36bee;">To-Do List</h1>
+        <input type="text" id="inputfield"> <button id="btn">Add-ToDo</button>
+        <div id="todo"></div>
+    </div>
+
+    <script>
+        var inputfield = document.getElementById('inputfield');
+        var button = document.getElementById('btn');
+        var todoc = document.getElementById('todo');
+
+        button.addEventListener('click',function(){
+            var par =document.createElement('p');
+            par.classList.add('todoclass');
+            todoc.appendChild(par);
+
+            par.innerText = inputfield.value;
+            inputfield.value = "";
+
+            par.addEventListener('click', ()=>{par.style.textDecoration = "line-through"});
+            par.addEventListener('dblclick', ()=>{todoc.removeChild(par)});
+
+        })
+    </script>
+</body>
+</html>
